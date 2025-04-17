@@ -44,19 +44,26 @@
 #
 import random
 
-# tworzymy dwie listy
-imiona = ["Ala", "Bartek", "Celina"]
-punkty = [random.randint(1, 100) for _ in imiona]  # losowe liczby dla każdego imienia
+# 1. Tworzenie dwóch list
+imiona = ["Ala", "Bartek", "Celina"]  # Lista imion
+punkty = [random.randint(1, 100) for _ in imiona]  # Losowanie punktów dla każdego imienia (zakres 1-100)
 
-# łączymy imiona z punktami
+# 2. Łączenie list imion i punktów za pomocą funkcji zip()
 wyniki = list(zip(imiona, punkty))
-print("Lista wyników:", wyniki)
+# Funkcja zip() łączy dwie listy, tworząc listę krotek (par) z elementów z obu list -> https://docs.python.org/3/library/functions.html#zip
+print("Połączona lista:", wyniki)
 
-# sprawdzamy dzielenie z możliwym wyjątkiem
+# 3. Moduł random z biblioteki standardowej
+# Losowanie liczby 0 lub 1 w celu wywołania wyjątku ZeroDivisionError
+liczba = random.randint(0, 1)  # Funkcja random.randint() losuje liczbę całkowitą z zadanego zakresu -> https://docs.python.org/3/library/random.html#random.randint
+print("Wylosowana liczba:", liczba)
+
+# 4. Obsługa wyjątku ZeroDivisionError
 try:
-    liczba = random.randint(0, 1)  # może być 0 albo 1
-    wynik = 10 / liczba
+    wynik = 10 / liczba  # Próba dzielenia przez wylosowaną liczbę
     print("10 podzielone przez", liczba, "to", wynik)
-except ZeroDivisionError:
+except ZeroDivisionError:  # Obsługuje błąd dzielenia przez zero
     print("Ups! Dzielenie przez zero.")
+# Wyjątek ZeroDivisionError pojawia się, gdy próbujemy podzielić przez zero -> https://docs.python.org/3/library/exceptions.html#ZeroDivisionError
+
 
